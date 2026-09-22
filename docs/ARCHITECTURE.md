@@ -77,9 +77,11 @@ Additionally, Vernii assumes the following parametrized layout for external reso
 
 ## Last Level Cache
 
-## QSPI, GPIO
+## GPIO
 
 ## UART
+
+## QSPI
 
 ## Boot ROM
 
@@ -94,6 +96,6 @@ and on a card, are in [SOFTWARE_STACK.md](SOFTWARE_STACK.md).
 ## Not Implemented
 
 - **QSPI input synchronization** - They go straight into `spi_host`, as OpenTitan requires. Must constrain with respect to SCK instead.
-- **AXI atomics** - Atomic instructions (`lr`, `sc`, `amo`) are atomic only from the view of the core (i.e. during interrupts), and not to other devices in the system.
+- **AXI atomics** - Atomic instructions (`lr`, `sc`, `amo`) are atomic only from the view of the core (i.e. during interrupts), and not to other devices in the system. Atomic instructions executing on FRISC-V are **not** atomic from the point of view of the AXI subordinate port.
 - **DFT** - No scan implemented.
 - **Zero initialization** - Non-`x0` GPRs and OCM initialize to `X`. Write before reading.
