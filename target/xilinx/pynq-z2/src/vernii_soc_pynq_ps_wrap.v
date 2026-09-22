@@ -18,8 +18,6 @@ module vernii_soc_pynq_ps_wrap #(
     parameter NumGpio   = 27,
     parameter BootSelW  = 2
 ) (
-    // Without the association the block design cannot tell what clocks m_axi,
-    // defaults it to 100 MHz and fails validation against the interconnect
     (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk_i CLK" *)
     (* X_INTERFACE_PARAMETER = "ASSOCIATED_BUSIF m_axi, ASSOCIATED_RESET rstn_i" *)
     input  wire clk_i,
@@ -96,24 +94,24 @@ vernii_soc_pynq_ps #(
     .NumGpio   ( NumGpio   ),
     .BootSelW  ( BootSelW  )
 ) i_vernii_soc_pynq_ps (
-    .clk_i  ( clk_i  ),
-    .rstn_i ( rstn_i ),
+    .clk_i         ( clk_i         ),
+    .rstn_i        ( rstn_i        ),
 
-    .led_o ( led_o ),
+    .led_o         ( led_o         ),
 
-    .jtag_tck_i ( jtag_tck_i ),
-    .jtag_tms_i ( jtag_tms_i ),
-    .jtag_tdi_i ( jtag_tdi_i ),
-    .jtag_tdo_o ( jtag_tdo_o ),
+    .jtag_tck_i    ( jtag_tck_i    ),
+    .jtag_tms_i    ( jtag_tms_i    ),
+    .jtag_tdi_i    ( jtag_tdi_i    ),
+    .jtag_tdo_o    ( jtag_tdo_o    ),
 
-    .uart_rx_i ( uart_rx_i ),
-    .uart_tx_o ( uart_tx_o ),
+    .uart_rx_i     ( uart_rx_i     ),
+    .uart_tx_o     ( uart_tx_o     ),
 
-    .qspi_sck_o ( qspi_sck_o ),
-    .qspi_cs_o  ( qspi_cs_o  ),
-    .qspi_sd_io ( qspi_sd_io ),
+    .qspi_sck_o    ( qspi_sck_o    ),
+    .qspi_cs_o     ( qspi_cs_o     ),
+    .qspi_sd_io    ( qspi_sd_io    ),
 
-    .gpio_io ( gpio_io ),
+    .gpio_io       ( gpio_io       ),
 
     .m_axi_awaddr  ( m_axi_awaddr  ),
     .m_axi_awlen   ( m_axi_awlen   ),
@@ -127,16 +125,16 @@ vernii_soc_pynq_ps #(
     .m_axi_awvalid ( m_axi_awvalid ),
     .m_axi_awready ( m_axi_awready ),
 
-    .m_axi_wdata  ( m_axi_wdata  ),
-    .m_axi_wstrb  ( m_axi_wstrb  ),
-    .m_axi_wlast  ( m_axi_wlast  ),
-    .m_axi_wvalid ( m_axi_wvalid ),
-    .m_axi_wready ( m_axi_wready ),
+    .m_axi_wdata   ( m_axi_wdata   ),
+    .m_axi_wstrb   ( m_axi_wstrb   ),
+    .m_axi_wlast   ( m_axi_wlast   ),
+    .m_axi_wvalid  ( m_axi_wvalid  ),
+    .m_axi_wready  ( m_axi_wready  ),
 
-    .m_axi_bresp  ( m_axi_bresp  ),
-    .m_axi_bid    ( m_axi_bid    ),
-    .m_axi_bvalid ( m_axi_bvalid ),
-    .m_axi_bready ( m_axi_bready ),
+    .m_axi_bresp   ( m_axi_bresp   ),
+    .m_axi_bid     ( m_axi_bid     ),
+    .m_axi_bvalid  ( m_axi_bvalid  ),
+    .m_axi_bready  ( m_axi_bready  ),
 
     .m_axi_araddr  ( m_axi_araddr  ),
     .m_axi_arlen   ( m_axi_arlen   ),
@@ -150,12 +148,12 @@ vernii_soc_pynq_ps #(
     .m_axi_arvalid ( m_axi_arvalid ),
     .m_axi_arready ( m_axi_arready ),
 
-    .m_axi_rdata  ( m_axi_rdata  ),
-    .m_axi_rresp  ( m_axi_rresp  ),
-    .m_axi_rid    ( m_axi_rid    ),
-    .m_axi_rlast  ( m_axi_rlast  ),
-    .m_axi_rvalid ( m_axi_rvalid ),
-    .m_axi_rready ( m_axi_rready )
+    .m_axi_rdata   ( m_axi_rdata   ),
+    .m_axi_rresp   ( m_axi_rresp   ),
+    .m_axi_rid     ( m_axi_rid     ),
+    .m_axi_rlast   ( m_axi_rlast   ),
+    .m_axi_rvalid  ( m_axi_rvalid  ),
+    .m_axi_rready  ( m_axi_rready  )
 );
 
 endmodule

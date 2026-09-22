@@ -111,10 +111,10 @@ end
 
 logic soc_end;
 
-assign led_o[0] = soc_end;           // LD5 green: program signalled completion
-assign led_o[1] = 1'b1;              // LD4 blue:  bitstream configured
-assign led_o[2] = ~soc_rst_n;        // LD4 red:   SoC held in reset
-assign led_o[3] = heartbeat_cnt[23]; // LD4 green: free-running heartbeat
+assign led_o[0] = soc_end;           // program completion
+assign led_o[1] = 1'b1;              // bitstream configured
+assign led_o[2] = ~soc_rst_n;        // SoC in reset
+assign led_o[3] = heartbeat_cnt[23]; // heartbeat
 
 vernii_axi_req_t  axi_req;
 vernii_axi_resp_t axi_rsp;
@@ -168,48 +168,48 @@ assign qspi_cs_o  = qspi_cs;
 `pragma diagnostic push
 `pragma diagnostic ignore="-Wempty-output-connection"
 vernii_soc #(
-    .OcmBase          ( OcmBase        ),
-    .OcmSize          ( OcmSize        ),
-    .ExtBase          ( ExtBase        ),
-    .ExtSize          ( ExtSize        ),
-    .ZsblRomEnable    ( ZsblRom != 0                     ),
-    .BootSelW         ( BootSelW       ),
-    .NumMRegRules     ( 1              ),
-    .MRegRules        ( MRegRules      ),
-    .HaltOnEnd        ( 1'b1           )
+    .OcmBase          ( OcmBase      ),
+    .OcmSize          ( OcmSize      ),
+    .ExtBase          ( ExtBase      ),
+    .ExtSize          ( ExtSize      ),
+    .ZsblRomEnable    ( ZsblRom != 0 ),
+    .BootSelW         ( BootSelW     ),
+    .NumMRegRules     ( 1            ),
+    .MRegRules        ( MRegRules    ),
+    .HaltOnEnd        ( 1'b1         )
 ) i_vernii_soc (
-    .clk_i          ( clk_i                  ),
-    .rst_ni         ( soc_rst_n              ),
-    .test_mode_i    ( 1'b0                   ),
-    .por_rst_no     (                        ),
-    .soc_rst_no     (                        ),
-    .end_o          ( soc_end                ),
-    .s_axi_gp_req_i ( '0                     ),
-    .s_axi_gp_rsp_o (                        ),
-    .m_axi_hp_req_o ( axi_req                ),
-    .m_axi_hp_rsp_i ( axi_rsp                ),
-    .m_reg_req_o    ( m_reg_req              ),
-    .m_reg_rsp_i    ( m_reg_rsp              ),
-    .boot_sel_i     ( gpio_in[BootSelW-1:0]  ),
-    .uart0_rx_i     ( uart_rx_i              ),
-    .uart0_tx_o     ( uart_tx_o              ),
-    .jtag_tck_i     ( jtag_tck_i             ),
-    .jtag_tms_i     ( jtag_tms_i             ),
-    .jtag_trst_ni   ( 1'b1                   ),
-    .jtag_tdi_i     ( jtag_tdi_i             ),
-    .jtag_tdo_o     ( jtag_tdo_o             ),
-    .jtag_tdo_oe_o  (                        ),
-    .qspi0_sck_o    ( qspi_sck               ),
-    .qspi0_sck_oe_o ( qspi_sck_oe            ),
-    .qspi0_cs_o     ( qspi_cs                ),
-    .qspi0_cs_oe_o  ( qspi_cs_oe             ),
-    .qspi0_sd_o     ( qspi_sd_o              ),
-    .qspi0_sd_oe_o  ( qspi_sd_oe             ),
-    .qspi0_sd_i     ( qspi_sd_i              ),
-    .ext_irq_i      ( '0                     ),
-    .gpio_a_i       ( gpio_in                ),
-    .gpio_a_o       ( gpio_out               ),
-    .gpio_a_oe_o    ( gpio_oe                )
+    .clk_i          ( clk_i                 ),
+    .rst_ni         ( soc_rst_n             ),
+    .test_mode_i    ( 1'b0                  ),
+    .por_rst_no     ( /* unused */          ),
+    .soc_rst_no     ( /* unused */          ),
+    .end_o          ( soc_end               ),
+    .s_axi_gp_req_i ( '0                    ),
+    .s_axi_gp_rsp_o ( /* unused */          ),
+    .m_axi_hp_req_o ( axi_req               ),
+    .m_axi_hp_rsp_i ( axi_rsp               ),
+    .m_reg_req_o    ( m_reg_req             ),
+    .m_reg_rsp_i    ( m_reg_rsp             ),
+    .boot_sel_i     ( gpio_in[BootSelW-1:0] ),
+    .uart0_rx_i     ( uart_rx_i             ),
+    .uart0_tx_o     ( uart_tx_o             ),
+    .jtag_tck_i     ( jtag_tck_i            ),
+    .jtag_tms_i     ( jtag_tms_i            ),
+    .jtag_trst_ni   ( 1'b1                  ),
+    .jtag_tdi_i     ( jtag_tdi_i            ),
+    .jtag_tdo_o     ( jtag_tdo_o            ),
+    .jtag_tdo_oe_o  ( /* unused */          ),
+    .qspi0_sck_o    ( qspi_sck              ),
+    .qspi0_sck_oe_o ( qspi_sck_oe           ),
+    .qspi0_cs_o     ( qspi_cs               ),
+    .qspi0_cs_oe_o  ( qspi_cs_oe            ),
+    .qspi0_sd_o     ( qspi_sd_o             ),
+    .qspi0_sd_oe_o  ( qspi_sd_oe            ),
+    .qspi0_sd_i     ( qspi_sd_i             ),
+    .ext_irq_i      ( '0                    ),
+    .gpio_a_i       ( gpio_in               ),
+    .gpio_a_o       ( gpio_out              ),
+    .gpio_a_oe_o    ( gpio_oe               )
 );
 `pragma diagnostic pop
 

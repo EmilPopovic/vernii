@@ -7,9 +7,9 @@
 // You may obtain a copy of the License at https://solderpad.org/licenses/SHL-2.1/
 //
 // Emil Popović <mail@emilpopovic.me>
-//
-// Single-port block RAM, replacing the tech_cells_generic cell in the flist.
 
+`pragma diagnostic push
+`pragma diagnostic ignore="-Wunused-parameter"
 module tc_sram #(
     parameter int unsigned NumWords    = 32'd1024,
     parameter int unsigned DataWidth   = 32'd32,
@@ -99,3 +99,4 @@ assign rdata_o[0] = r_rdata;
 end
 
 endmodule
+`pragma diagnostic pop
