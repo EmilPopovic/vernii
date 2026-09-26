@@ -259,16 +259,16 @@ logic plic_rst_n;     // i_plic
 logic aclint_rst_n;   // i_aclint
 logic glue_rst_n;     // reg/mem shims, zsbl rom, debug-module
 
-soc_rst_replica i_rst_rep_cpu     ( .clk_i, .rst_ni ( soc_rst_n ), .rst_no ( cpu_rst_n     ) );
-soc_rst_replica i_rst_rep_axi     ( .clk_i, .rst_ni ( soc_rst_n ), .rst_no ( axi_rst_n     ) );
-soc_rst_replica i_rst_rep_mem_hub ( .clk_i, .rst_ni ( soc_rst_n ), .rst_no ( mem_hub_rst_n ) );
-soc_rst_replica i_rst_rep_scb     ( .clk_i, .rst_ni ( soc_rst_n ), .rst_no ( scb_rst_n     ) );
-soc_rst_replica i_rst_rep_uart0   ( .clk_i, .rst_ni ( soc_rst_n ), .rst_no ( uart0_rst_n   ) );
-soc_rst_replica i_rst_rep_gpio_a  ( .clk_i, .rst_ni ( soc_rst_n ), .rst_no ( gpio_a_rst_n  ) );
-soc_rst_replica i_rst_rep_qspi0   ( .clk_i, .rst_ni ( soc_rst_n ), .rst_no ( qspi0_rst_n   ) );
-soc_rst_replica i_rst_rep_plic    ( .clk_i, .rst_ni ( soc_rst_n ), .rst_no ( plic_rst_n    ) );
-soc_rst_replica i_rst_rep_aclint  ( .clk_i, .rst_ni ( soc_rst_n ), .rst_no ( aclint_rst_n  ) );
-soc_rst_replica i_rst_rep_glue    ( .clk_i, .rst_ni ( soc_rst_n ), .rst_no ( glue_rst_n    ) );
+vernii_rst_replica i_rst_rep_cpu     ( .clk_i, .rst_ni ( soc_rst_n ), .rst_no ( cpu_rst_n     ) );
+vernii_rst_replica i_rst_rep_axi     ( .clk_i, .rst_ni ( soc_rst_n ), .rst_no ( axi_rst_n     ) );
+vernii_rst_replica i_rst_rep_mem_hub ( .clk_i, .rst_ni ( soc_rst_n ), .rst_no ( mem_hub_rst_n ) );
+vernii_rst_replica i_rst_rep_scb     ( .clk_i, .rst_ni ( soc_rst_n ), .rst_no ( scb_rst_n     ) );
+vernii_rst_replica i_rst_rep_uart0   ( .clk_i, .rst_ni ( soc_rst_n ), .rst_no ( uart0_rst_n   ) );
+vernii_rst_replica i_rst_rep_gpio_a  ( .clk_i, .rst_ni ( soc_rst_n ), .rst_no ( gpio_a_rst_n  ) );
+vernii_rst_replica i_rst_rep_qspi0   ( .clk_i, .rst_ni ( soc_rst_n ), .rst_no ( qspi0_rst_n   ) );
+vernii_rst_replica i_rst_rep_plic    ( .clk_i, .rst_ni ( soc_rst_n ), .rst_no ( plic_rst_n    ) );
+vernii_rst_replica i_rst_rep_aclint  ( .clk_i, .rst_ni ( soc_rst_n ), .rst_no ( aclint_rst_n  ) );
+vernii_rst_replica i_rst_rep_glue    ( .clk_i, .rst_ni ( soc_rst_n ), .rst_no ( glue_rst_n    ) );
 
 //////////////
 // CPU Core //
@@ -1282,25 +1282,6 @@ aclint #(
     .mtime_o    ( mtime                  )
 );
 `pragma diagnostic pop
-
-endmodule
-
-(* keep *)
-(* keep_hierarchy *)
-module soc_rst_replica (
-    input  logic clk_i,
-    input  logic rst_ni,
-    output logic rst_no
-);
-
-logic rst_nq;
-
-always_ff @(posedge clk_i or negedge rst_ni) begin
-    if (!rst_ni) rst_nq <= 1'b0;
-    else         rst_nq <= 1'b1;
-end
-
-assign rst_no = rst_nq;
 
 endmodule
 

@@ -8,10 +8,7 @@
 //
 // Emil Popovic <mail@emilpopovic.me>
 
-/*
- * System Control Block
- */
-
+// System Control Block
 module vernii_scb
     import vernii_pkg::*;
 #(
