@@ -17,8 +17,8 @@ packages:
     - obi_peripherals
     - register_interface
   axi:
-    revision: a8c53cee2520d328d390c507c88818e8ac144c8c
-    version: 0.39.10
+    revision: 42ca270ebd8bbbc1c64ddc0ca712e722eb9e3f06
+    version: 0.39.11
     source:
       Git: https://github.com/pulp-platform/axi.git
     dependencies:
@@ -39,11 +39,18 @@ packages:
     source:
       Git: https://github.com/pulp-platform/common_verification.git
     dependencies: []
+  friscv:
+    revision: 8a0d03f1434eb814c48ac9ddc335a10a58b845d3
+    version: 3.0.0
+    source:
+      Git: https://github.com/friscv/friscv.git
+    dependencies:
+    - friscv-mem-utils
   friscv-mem-utils:
     revision: 2ee5bbf75d9aa2fe440092afeabfe33e6f3fd223
     version: 4.2.0
     source:
-      Git: https://github.com/EmilPopovic/friscv-mem-utils.git
+      Git: https://github.com/friscv/friscv-mem-utils.git
     dependencies:
     - axi
   obi:
@@ -72,10 +79,10 @@ packages:
     - register_interface
     - tech_cells_generic
   reg-rom:
-    revision: 29447f72abd1e42424df50f4a42a8c4f4ea5e5ee
-    version: 0.1.1
+    revision: eeb0cb8755234865638f0d34d08c390aee1ed038
+    version: 0.1.2
     source:
-      Git: https://github.com/cappig/reg-rom.git
+      Git: https://github.com/friscv/reg-rom.git
     dependencies: []
   register_interface:
     revision: 146501d80052b61475cdc333d3aab4cd769fd5dc
@@ -95,10 +102,10 @@ packages:
     - common_cells
     - tech_cells_generic
   riscv-frac-aclint:
-    revision: f87dfaeda5f06b6ef1444f02d69248bbae46852f
-    version: 0.1.2
+    revision: 5029dd790347c3bedd42166177c5589516ed9bb7
+    version: 0.1.3
     source:
-      Git: https://github.com/EmilPopovic/riscv-frac-aclint.git
+      Git: https://github.com/friscv/riscv-frac-aclint.git
     dependencies:
     - register_interface
   tech_cells_generic:

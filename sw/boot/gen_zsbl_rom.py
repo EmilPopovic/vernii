@@ -2,7 +2,7 @@
 # Copyright 2026 FER, HPC Architecture and Application Research Center
 # SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
 #
-# Matej Jurasić <matej.jurasic@cappig.dev>
+# Matej Jurasic <matej.jurasic@cappig.dev>
 
 # Assemble the ZSBL into an RTL package
 
@@ -23,7 +23,7 @@ HEADER = """\
 // at your option, the Apache License version 2.0.
 // You may obtain a copy of the License at https://solderpad.org/licenses/SHL-2.1/
 //
-// Matej Jurasić <matej.jurasic@cappig.dev>
+// Matej Jurasic <matej.jurasic@cappig.dev>
 """
 
 

@@ -14,8 +14,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// Emil Popović <mail@emilpopovic.me>
-// Matej Jurasić <matej.jurasic@cappig.dev>
+// Emil Popovic <mail@emilpopovic.me>
+// Matej Jurasic <matej.jurasic@cappig.dev>
 
 module vernii_soc
     import vernii_pkg::*;
@@ -43,7 +43,6 @@ module vernii_soc
     parameter int unsigned DtlbEntries      = 4,
     parameter bit          FineTlbFlush     = 0,
     parameter bit          EnforcePmp       = 0,
-    parameter bit          EnforcePtwPmp    = 0,
     parameter int unsigned PmpEntries       = 8,
     parameter bit          EnableIsaE       = 0,
     parameter bit          EnableIsaM       = 1,
@@ -291,7 +290,6 @@ friscv #(
     .EnableFastMul      ( EnableFastMul    ),
     .EnableIsaA         ( EnableIsaA       ),
     .EnforcePmp         ( EnforcePmp       ),
-    .EnforcePtwPmp      ( EnforcePtwPmp    ),
     .PmpEntries         ( PmpEntries       ),
     .PmpUsable          ( PmpEntries       )
 ) i_cpu (
@@ -816,7 +814,6 @@ localparam vernii_syscfg_t SysCfg = '{
     mmu:                EnableMmu,
     fine_tlb_flush:     EnableMmu && FineTlbFlush,
     pmp:                EnforcePmp,
-    ptw_pmp:            EnforcePtwPmp,
     isa_e:              EnableIsaE,
     isa_m:              EnableIsaM,
     isa_a:              EnableIsaA,

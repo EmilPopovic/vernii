@@ -2,7 +2,7 @@
 # Copyright 2026 FER, HPC Architecture and Application Research Center
 # SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
 #
-# Matej Jurasić <matej.jurasic@cappig.dev>
+# Matej Jurasic <matej.jurasic@cappig.dev>
 
 import subprocess
 import sys
@@ -14,10 +14,6 @@ ROOT = Path(__file__).resolve().parent.parent
 SIM_ROOT = ROOT.parent.parent / "target" / "sim"
 
 TARGETS = {
-    "core": (
-        ROOT / "elfs",
-        SIM_ROOT / "obj_dir_core" / "friscv_cpu_verilator",
-    ),
     "soc": (
         ROOT / "elfs-soc",
         SIM_ROOT / "obj_dir_soc_act" / "vernii_soc",
@@ -32,23 +28,13 @@ def no_elfs():
     sys.exit(1)
 
 
-def command(target, executable, elf):
-    if target == "core":
-        return [
-            executable,
-            "--elf",
-            elf,
-            "--check-pass",
-            "--wait-cycles",
-            "-2",
-        ]
-
+def command(executable, elf):
     return [executable, "test", elf]
 
 
 if __name__ == "__main__":
     if len(sys.argv) != 2 or sys.argv[1] not in TARGETS:
-        print(f"usage: {sys.argv[0]} <core|soc>", file=sys.stderr)
+        print(f"usage: {sys.argv[0]} soc", file=sys.stderr)
         sys.exit(1)
 
     target = sys.argv[1]
@@ -73,7 +59,7 @@ if __name__ == "__main__":
 
     for elf in elfs:
         result = subprocess.run(
-            command(target, executable, elf),
+            command(executable, elf),
             capture_output=True,
             text=True,
             check=False,

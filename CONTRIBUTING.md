@@ -4,7 +4,6 @@
 
 This project adheres to the [lowRISC Verilog Coding Style Guide](https://github.com/lowRISC/style-guides/blob/master/VerilogCodingStyle.md), with the following exceptions:
 
-- Non-ASCII characters may be used in the author list under the license banner.
 - PULP-style module instantiation must be used instead of lowRISC-style:
 
     ```systemverilog

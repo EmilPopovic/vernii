@@ -1,8 +1,8 @@
 // Copyright 2026 FER, HPC Architecture and Application Research Center
 // SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
 //
-// Matej Jurasić <matej.jurasic@cappig.dev>
-// Emil Popović <mail@emilpopovic.me>
+// Matej Jurasic <matej.jurasic@cappig.dev>
+// Emil Popovic <mail@emilpopovic.me>
 
 #include "verilated.h"
 
@@ -25,7 +25,6 @@ namespace {
 constexpr uint32_t MEM_BASE = 0x80000000;
 constexpr uint32_t UART0_BASE = 0x03010000;
 constexpr uint32_t SCB_LLCSEL = 0x0300000C;
-constexpr uint32_t HYPER_CFG_BASE = 0x04010000;
 constexpr uint32_t SCRATCH_ADDRESS = 0x03000000;
 constexpr uint32_t PARKED = 1;
 constexpr uint32_t PASS_VALUE = 0xaabbccdd;
@@ -219,37 +218,6 @@ void preload_sd(SocTestbench& testbench, const char* path) {
     std::fprintf(stderr, "sd image %s: %zu bytes\n", path, data.size());
 }
 
-// VERNII_HB_CFG is "reg:value[,...]"
-void apply_hyperbus_config(Jtag& jtag) {
-    const char* spec = std::getenv("VERNII_HB_CFG");
-
-    if (spec == nullptr) {
-        return;
-    }
-
-    while (*spec != '\0') {
-        char* end = nullptr;
-        unsigned long index = std::strtoul(spec, &end, 0);
-
-        if (end == spec || *end != ':') {
-            throw std::runtime_error("VERNII_HB_CFG wants reg:value pairs");
-        }
-
-        spec = end + 1;
-        unsigned long value = std::strtoul(spec, &end, 0);
-
-        if (end == spec) {
-            throw std::runtime_error("VERNII_HB_CFG wants reg:value pairs");
-        }
-
-        jtag.write_memory(HYPER_CFG_BASE + uint32_t(index) * 4,
-                          word_bytes(uint32_t(value)));
-        std::fprintf(stderr, "hyperbus cfg[%lu] = %lu\n", index, value);
-
-        spec = (*end == ',') ? end + 1 : end;
-    }
-}
-
 // VERNII_LLCSEL marks ways as cache
 void apply_cache_config(Jtag& jtag) {
     if (std::getenv("VERNII_LLCSEL") == nullptr) {
@@ -290,7 +258,6 @@ ElfImage prepare_image(SocTestbench& testbench, Jtag& jtag, const char* path) {
 
     validate(image);
     park(testbench, jtag);
-    apply_hyperbus_config(jtag);
     apply_cache_config(jtag);
     apply_uart_config(testbench, jtag);
     apply_media(testbench);

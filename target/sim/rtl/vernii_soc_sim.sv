@@ -6,8 +6,8 @@
 // at your option, the Apache License version 2.0.
 // You may obtain a copy of the License at https://solderpad.org/licenses/SHL-2.1/
 //
-// Emil Popović <mail@emilpopovic.me>
-// Matej Jurasić <matej.jurasic@cappig.dev>
+// Emil Popovic <mail@emilpopovic.me>
+// Matej Jurasic <matej.jurasic@cappig.dev>
 
 module vernii_soc_sim import vernii_pkg::*; #(
     parameter int unsigned OcmBase          = 32'h0000_0000,
@@ -87,13 +87,11 @@ module vernii_soc_sim import vernii_pkg::*; #(
     input  logic        axi_r_id_i
 );
 
-localparam int unsigned PinmuxSlv    = 0;
-localparam int unsigned HyperCfgSlv  = 1;
-localparam int unsigned NumMRegRules = 2;
+localparam int unsigned IntegratorSlv = 0;
+localparam int unsigned NumMRegRules  = 1;
 
 localparam axi_pkg::xbar_rule_32_t [NumMRegRules-1:0] MRegRules = '{
-    '{ idx: HyperCfgSlv, start_addr: 32'h0401_0000, end_addr: 32'h0401_1000 },
-    '{ idx: PinmuxSlv,   start_addr: 32'h0400_0000, end_addr: 32'h0400_1000 }
+    '{ idx: IntegratorSlv, start_addr: 32'h0400_0000, end_addr: 32'h0400_1000 }
 };
 
 vernii_axi_req_t  axi_req;

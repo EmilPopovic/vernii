@@ -6,7 +6,7 @@
 // at your option, the Apache License version 2.0.
 // You may obtain a copy of the License at https://solderpad.org/licenses/SHL-2.1/
 //
-// Emil Popović <mail@emilpopovic.me>
+// Emil Popovic <mail@emilpopovic.me>
 
 `include "axi/typedef.svh"
 `include "register_interface/typedef.svh"
@@ -66,7 +66,6 @@ typedef struct packed {
     logic        mmu;                 // MMU present
     logic        fine_tlb_flush;      // sfence.vma with rs1 flushes one entry
     logic        pmp;                 // PMP enforced
-    logic        ptw_pmp;             // PMP enforced on page table walks
     logic        isa_e;               // RV32E register file
     logic        isa_m;               // M extension
     logic        isa_a;               // A extension

@@ -3,7 +3,7 @@
  *
  * Directed tests link into external memory so they run through the LLC
  *
- * Emil Popović <mail@emilpopovic.me>
+ * Emil Popovic <mail@emilpopovic.me>
  */
 OUTPUT_ARCH("riscv")
 ENTRY(_start)

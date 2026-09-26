@@ -1,11 +1,22 @@
 // Copyright 2026 FER, HPC Architecture and Application Research Center
 // SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
 //
-// Matej Jurasić <matej.jurasic@cappig.dev>
+// Emil Popovic <mail@emilpopovic.me>
+// Matej Jurasic <matej.jurasic@cappig.dev>
 
 #ifndef _RVTEST_SOC_CONFIG_H
 #define _RVTEST_SOC_CONFIG_H
 
-#include "../friscv-full/rvtest_config.h"
+#define RVMODEL_PMP_GRAIN 0
+#define RVMODEL_NUM_PMPS 16
+
+#define S_SUPPORTED
+#define SV32_SUPPORTED
+#define ZAAMO_SUPPORTED
+#define ZALRSC_SUPPORTED
+
+#define TIME_CSR_IMPLEMENTED 1
+#define COUNTINHIBIT_EN_0
+#define COUNTINHIBIT_EN_2
 
 #endif

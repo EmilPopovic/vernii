@@ -51,9 +51,7 @@ Vernii's internal memory map is static.
 | Debug module | `0x0305_0000` | `0x0305_1000` | E |
 | PLIC | `0x0C00_0000` | `0x0C20_2000` | |
 
-`0x0300_0000` to `0x03FF_FFFF` is reserved for Vernii, including the slots it
-does not use yet. `MRegRules` may not map into it, and elaboration fails if one
-does. Integrator peripherals start at `0x0400_0000`.
+`0x0300_0000` to `0x03FF_FFFF` is reserved for Vernii, including the slots it does not use yet. `MRegRules` may not map into it, and elaboration fails if one does. Integrator peripherals start at `0x0400_0000`.
 
 The flags are defined as follows:
 
@@ -85,13 +83,9 @@ Additionally, Vernii assumes the following parametrized layout for external reso
 
 ## Boot ROM
 
-The reset vector, and a fixed 4 KiB slot whatever the ROM contains, so the
-memory map does not move when the image does. An image may be at most 1024
-words, and a read past its end returns a bus error.
+The reset vector, and a fixed 4 KiB slot whatever the ROM contains, so the memory map does not move when the image does. An image may be at most 1024 words, and a read past its end returns a bus error.
 
-The ROM itself is an integrator's to replace, through `ZsblRomWords` and
-`ZsblRomProg`. What the default one does, and the layouts it expects on flash
-and on a card, are in [SOFTWARE_STACK.md](SOFTWARE_STACK.md).
+The ROM itself is an integrator's to replace, through `ZsblRomWords` and `ZsblRomProg`. What the default one does, and the layouts it expects on flash and on a card, are in [SOFTWARE_STACK.md](SOFTWARE_STACK.md).
 
 ## Not Implemented
 

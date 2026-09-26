@@ -14,7 +14,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// Emil Popović <mail@emilpopovic.me>
+// Emil Popovic <mail@emilpopovic.me>
 
 // Vernii SoC peripheral access layer header file
 

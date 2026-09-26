@@ -2,10 +2,6 @@ ACT_ROOT := riscv-arch-test
 ACT_REPO := https://github.com/riscv/riscv-arch-test.git
 ACT_REF  := 5f69fff1851122eabe87233c08d6c4096dd0c5ac
 ACT_CONFIG_ROOT := config/cores/friscv
-ACT_FULL_SRC := $(ACT_CONFIG_ROOT)/friscv-full
-ACT_FULL_DST := $(ACT_ROOT)/$(ACT_CONFIG_ROOT)/friscv-full
-ACT_FULL_WORK := $(ACT_ROOT)/work/friscv-full
-ACT_FULL_CONFIG := $(ACT_CONFIG_ROOT)/friscv-full/test_config.yaml
 ACT_SOC_SRC := $(ACT_CONFIG_ROOT)/friscv-soc
 ACT_SOC_DST := $(ACT_ROOT)/$(ACT_CONFIG_ROOT)/friscv-soc
 ACT_SOC_WORK := $(ACT_ROOT)/work/friscv-soc
@@ -35,20 +31,12 @@ distclean:
 
 .PHONY: config
 config: clone
-	rm -rf $(ACT_FULL_DST) $(ACT_SOC_DST)
-	mkdir -p $(ACT_FULL_DST) $(ACT_SOC_DST)
-	cp $(ACT_FULL_SRC)/* $(ACT_FULL_DST)/
+	rm -rf $(ACT_SOC_DST)
+	mkdir -p $(ACT_SOC_DST)
 	cp $(ACT_SOC_SRC)/* $(ACT_SOC_DST)/
 
 .PHONY: all
-all: all-core all-soc
-
-.PHONY: all-core
-all-core: config
-	rm -rf elfs/
-	rm -rf $(ACT_FULL_WORK)/build $(ACT_FULL_WORK)/elfs
-	UV_LINK_MODE=$(UV_LINK_MODE) CONFIG_FILES=$(ACT_FULL_CONFIG) EXCLUDE_EXTENSIONS=$(ACT_EXCLUDE_EXTENSIONS) $(MAKE) -C $(ACT_ROOT) --jobs $(JOBS)
-	python3 scripts/copy_elfs.py core
+all: all-soc
 
 .PHONY: all-soc
 all-soc: config
@@ -56,11 +44,6 @@ all-soc: config
 	rm -rf $(ACT_SOC_WORK)/build $(ACT_SOC_WORK)/elfs
 	UV_LINK_MODE=$(UV_LINK_MODE) CONFIG_FILES=$(ACT_SOC_CONFIG) EXCLUDE_EXTENSIONS=$(ACT_EXCLUDE_EXTENSIONS) $(MAKE) -C $(ACT_ROOT) --jobs $(JOBS)
 	python3 scripts/copy_elfs.py soc
-
-.PHONY: run-core
-run-core:
-	make -C $(TARGET_SIM_ROOT) core
-	python3 scripts/run.py core
 
 .PHONY: run-soc
 run-soc:

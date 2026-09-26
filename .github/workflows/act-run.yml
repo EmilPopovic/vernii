@@ -1,8 +1,8 @@
 # Copyright 2026 FER, HPC Architecture and Application Research Center
 # SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
 #
-# Emil Popović <mail@emilpopovic.me>
-# Matej Jurasić <matej.jurasic@cappig.dev>
+# Emil Popovic <mail@emilpopovic.me>
+# Matej Jurasic <matej.jurasic@cappig.dev>
 
 name: riscv-arch-test
 
@@ -35,7 +35,6 @@ jobs:
         uses: actions/cache/restore@v5
         with:
           path: |
-            verif/riscv-arch-test/elfs
             verif/riscv-arch-test/elfs-soc
           key: >-
             ${{ runner.os }}-act-elfs-${{
@@ -79,12 +78,8 @@ jobs:
         uses: actions/cache/save@v5
         with:
           path: |
-            verif/riscv-arch-test/elfs
             verif/riscv-arch-test/elfs-soc
           key: ${{ steps.cache-elfs.outputs.cache-primary-key }}
-
-      - name: Run arch tests on core
-        run: nix develop --accept-flake-config .#act --command make act-run-core
 
       - name: Run arch tests on SoC
         run: nix develop --accept-flake-config .#act --command make act-run-soc

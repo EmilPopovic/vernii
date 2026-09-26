@@ -1,11 +1,11 @@
 # Copyright 2026 FER, HPC Architecture and Application Research Center
 # SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
 #
-# Emil Popović <mail@emilpopovic.me>
-# Matej Jurasić <matej.jurasic@cappig.dev>
+# Emil Popovic <mail@emilpopovic.me>
+# Matej Jurasic <matej.jurasic@cappig.dev>
 
 {
-  description = "FRISC-V SoC toolchain";
+  description = "Vernii SoC toolchain";
 
   nixConfig = {
     extra-substituters = [ "https://nix-cache.fossi-foundation.org" ];
@@ -31,7 +31,6 @@
             inherit system;
             overlays = [ nix-eda.overlays.default ];
           };
-          # Must stay >= 11.0 for the empty-*-connection diagnostics
           sv-lang = nixpkgs-slang.legacyPackages.${system}.sv-lang;
           riscv-toolchain = pkgs.stdenv.mkDerivation rec {
             pname = "riscv64-unknown-elf-toolchain";

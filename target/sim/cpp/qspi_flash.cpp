@@ -1,8 +1,8 @@
 // Copyright 2026 FER, HPC Architecture and Application Research Center
 // SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
 //
-// Emil Popović <mail@emilpopovic.me>
-// Matej Jurasić <matej.jurasic@cappig.dev>
+// Emil Popovic <mail@emilpopovic.me>
+// Matej Jurasic <matej.jurasic@cappig.dev>
 
 #include "qspi_flash.hpp"
 

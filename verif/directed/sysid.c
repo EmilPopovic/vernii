@@ -1,7 +1,7 @@
 // Copyright 2026 FER, HPC Architecture and Application Research Center
 // SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
 //
-// Emil Popović <mail@emilpopovic.me>
+// Emil Popovic <mail@emilpopovic.me>
 
 #include <stdint.h>
 #include "vernii.h"
@@ -31,7 +31,7 @@ enum {
 #define SIM_DTLB_ENTRIES  (4u)
 #define SIM_EXT_IRQ       (2u)
 #define SIM_GPIO_A_IRQ    (8u)
-#define SIM_M_REG_RULES   (2u)
+#define SIM_M_REG_RULES   (1u)
 #define SIM_BOOT_SEL_W    (2u)
 
 // Expected SYSFEAT

@@ -1,7 +1,7 @@
 // Copyright 2026 FER, HPC Architecture and Application Research Center
 // SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
 //
-// Emil Popović <mail@emilpopovic.me>
+// Emil Popovic <mail@emilpopovic.me>
 
 .equ SCRATCH, 0x03000000        # SCB.SCRATCH0, where the testbench reads the result
 .equ HALT,    0x50000000        # END_ADDRESS to end simulation

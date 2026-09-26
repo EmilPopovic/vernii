@@ -1,6 +1,6 @@
 kind: architecture configuration
 type: fully configured
-name: friscv-full
+name: friscv-soc
 description: FRISC-V RV32IMA_Zicsr_Zifencei with M/S/U and Sv32
 
 implemented_extensions:

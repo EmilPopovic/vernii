@@ -6,7 +6,7 @@
 // at your option, the Apache License version 2.0.
 // You may obtain a copy of the License at https://solderpad.org/licenses/SHL-2.1/
 //
-// Matej Jurasić <matej.jurasic@cappig.dev>
+// Matej Jurasic <matej.jurasic@cappig.dev>
 
 // Generated from zsbl.S, do not edit
 package vernii_zsbl_rom_pkg;

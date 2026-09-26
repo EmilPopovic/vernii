@@ -6,7 +6,7 @@
 // at your option, the Apache License version 2.0.
 // You may obtain a copy of the License at https://solderpad.org/licenses/SHL-2.1/
 //
-// Emil Popović <mail@emilpopovic.me>
+// Emil Popovic <mail@emilpopovic.me>
 
 /*
  * System Control Block
@@ -212,7 +212,7 @@ localparam logic [31:0] SysFeat = {
     SysCfg.isa_a,           // [10]    ISAA
     SysCfg.isa_m,           // [9]     ISAM
     SysCfg.isa_e,           // [8]     ISAE
-    SysCfg.ptw_pmp,         // [7]     PTWPMP
+    1'b0,                   // [7]       reserved
     SysCfg.pmp,             // [6]     PMP
     SysCfg.fine_tlb_flush,  // [5]     FINETLBFLUSH
     SysCfg.mmu,             // [4]     MMU

@@ -1,8 +1,8 @@
 # Copyright 2026 FER, HPC Architecture and Application Research Center
 # SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
 #
-# Emil Popović <mail@emilpopovic.me>
-# Matej Jurasić <matej.jurasic@cappig.dev>
+# Emil Popovic <mail@emilpopovic.me>
+# Matej Jurasic <matej.jurasic@cappig.dev>
 
 sources.f: Bender.yml Bender.lock
 	rm sources.f || true
@@ -65,10 +65,6 @@ zsbl:
 sim:
 	make -C target/sim all
 
-.PHONY: act-run-core
-act-run-core:
-	make -C verif/riscv-arch-test run-core
-
 .PHONY: act-run-soc
 act-run-soc:
 	make -C verif/riscv-arch-test run-soc
@@ -80,7 +76,6 @@ directed-run:
 .PHONY: regression
 regression:
 	make lint
-	make -C verif/riscv-arch-test run-core
 	make -C verif/riscv-arch-test run-soc
 	make -C verif/directed run
 
