@@ -11,7 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- Import FRISC-V using Bender from [friscv/friscv](https://github.com/friscv/friscv).
 - Core-level simulation and the core-level `riscv-arch-test` (`act-run-core`). The core is tested in the [core repo](https://github.com/friscv/friscv).
+- `soc_rst_replica` brought into separate file.
 
 ## [1.0.0] - 2026-08-22
 

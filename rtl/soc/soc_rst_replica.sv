@@ -11,7 +11,7 @@
 // Reset replica to break up a high fanout reset tree
 (* keep *)
 (* keep_hierarchy *)
-module vernii_rst_replica (
+module soc_rst_replica (
     input  logic clk_i,
     input  logic rst_ni,
     output logic rst_no
