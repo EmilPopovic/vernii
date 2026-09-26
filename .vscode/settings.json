@@ -2,5 +2,11 @@
     "verilog.linting.linter": "none",
     "C_Cpp.intelliSenseEngine": "default",
     "clangd.enable": false,
-    "direnv.restart.automatic": true
+    "direnv.restart.automatic": true,
+    
+    // Language rules
+    "editor.rulers": [100],
+    "[markdown]": {
+        "editor.rulers": []
+    }
 }
